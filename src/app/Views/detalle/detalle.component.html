@@ -49,9 +49,13 @@
         </div>
         <div class="row" style="margin-top: 10%">
           <div class="col-12">
+            @if(Detalle.cantidad > 0) {
             <button class="btn botonPersonal" (click)="agregarCarrito()">
               Agregar al carrito
             </button>
+            } @else {
+            <button class="btn">No Disponible</button>
+            }
           </div>
         </div>
       </div>
