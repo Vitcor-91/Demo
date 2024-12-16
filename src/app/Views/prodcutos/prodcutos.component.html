@@ -1,0 +1,191 @@
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10">
+    <mat-card appearance="outlined">
+      <mat-card-content
+        style="
+          text-align: center;
+          background: #353c59;
+          color: white;
+          cursor: pointer;
+        "
+        (click)="categoria(0)"
+        >Productos</mat-card-content
+      >
+    </mat-card>
+  </div>
+  <div class="col-1"></div>
+</div>
+
+<div class="row" style="margin-top: 2%">
+  <p class="derecha">Agrega a tu carrito los articulos que deseas comprar</p>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    @if(productos.length > 0) {
+    <div class="row">
+      @for (item of categorias; track item.idcategoria) { @if(item.idcategoria
+      == categoriaSelect) {
+      <div class="col-2">
+        <button
+          style="width: 120px; background: #353c59; color: black"
+          type="button"
+          class="btn btn-secondary"
+          (click)="categoria(item.idcategoria)"
+        >
+          {{ item.name }}
+        </button>
+      </div>
+      } @else {
+      <div class="col-2">
+        <button
+          style="width: 120px; background: #f0f1f5; color: black"
+          type="button"
+          class="btn btn-secondary"
+          (click)="categoria(item.idcategoria)"
+        >
+          {{ item.name }}
+        </button>
+      </div>
+      }
+      <div class="col-1"></div>
+      }
+    </div>
+    }
+  </div>
+</div>
+
+<div class="row" style="padding-top: 4%">
+  <div class="col-12">
+    @if(productos.length > 0) {
+    <div class="row">
+      @for (item of productos; track item.idcategoria) {
+      <div class="col-3">
+        <div
+          class="card"
+          style="width: 100%; background: #f0f1f5; margin-bottom: 5%"
+        >
+          <div class="row" style="padding-top: 3%">
+            <div class="col-1"></div>
+            <div class="col-9">
+              <img
+                class="card-img-top"
+                width="80"
+                src="data:image/jpeg;base64,{{ item.img }}"
+                alt="Card image cap"
+              />
+            </div>
+            <div class="col-1"></div>
+          </div>
+          <div class="row" style="padding-top: 3%">
+            <div class="col-1"></div>
+            <div class="col-9" style="background: white; height: 12px">
+              <p style="font-size: 8px">
+                {{ item.nombre }} - Disponible: {{ item.cantidad }}
+              </p>
+            </div>
+            <div class="col-1"></div>
+          </div>
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-9" style="background: white; height: 13px">
+              <p style="font-size: 8px">${{ item.precio }}</p>
+            </div>
+            <div class="col-1"></div>
+          </div>
+          <div class="row" style="padding-top: 3%">
+            <div class="col-1"></div>
+            <div class="col-9">
+              @if(item.cantidad > 0) {
+              <button
+                class="btn"
+                (click)="agregar(item)"
+                style="
+                  font-size: 9px;
+                  background: #353c59;
+                  color: white;
+                  height: 25px;
+                  text-align: center;
+                  align-content: center;
+                  width: 100%;
+                "
+              >
+                Agregar
+              </button>
+              }
+            </div>
+            <div class="col-1"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-1"></div>
+      }
+    </div>
+    }
+  </div>
+</div>
+
+<div class="row" style="margin-top: 3%">
+  <div class="col-2">
+    <select
+      class="form-select"
+      aria-label=".form-select-lg example"
+      [(ngModel)]="selectTotal"
+      (change)="setPaginas()"
+    >
+      @for (item of totalPaginas; track item) {
+      <option value="{{ item }}">{{ item }}</option>
+      }
+    </select>
+  </div>
+  <div class="col-8"></div>
+  <div class="col-2">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-end">
+        @if(paginacion > 1) {
+        <li class="page-item" style="cursor: pointer">
+          <p class="page-link" (click)="setPestaniaLateral(1)">
+            {{ anterior }}
+          </p>
+        </li>
+        } @else{
+        <li class="page-item disabled" style="cursor: pointer">
+          <p class="page-link">{{ anterior }}</p>
+        </li>
+        } @for (item of paginas; track item) { @if(item == paginacion) {
+        <li class="page-item" style="cursor: pointer">
+          <p
+            class="page-link"
+            tabindex="{{ item }}"
+            (click)="setPestania(item)"
+            style="background: #353c59"
+          >
+            {{ item }}
+          </p>
+        </li>
+        } @else {
+        <li class="page-item" style="cursor: pointer">
+          <p
+            class="page-link"
+            tabindex="{{ item }}"
+            (click)="setPestania(item)"
+          >
+            {{ item }}
+          </p>
+        </li>
+        } } @if(paginacion < paginas.length) {
+        <li class="page-item">
+          <a class="page-link" (click)="setPestaniaLateral(2)">{{
+            siguiente
+          }}</a>
+        </li>
+        } @else {
+        <li class="page-item disabled">
+          <a class="page-link">{{ siguiente }}</a>
+        </li>
+        }
+      </ul>
+    </nav>
+  </div>
+</div>

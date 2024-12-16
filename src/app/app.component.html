@@ -1,0 +1,142 @@
+@if(sesionActive){
+    <div class="container-fluid ">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 menuPersonal">
+                    <img class="logoImgMneu" src="../../../assets/logo-strappberry 1.png" alt="Card image cap">
+                    
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-sm-start" style="margin-top: 30%;">
+                        <li (click)="listaProductos()" style="cursor: pointer;">
+                              
+                              <div style="display: flex; align-items: center;">
+                                <mat-icon style="margin-left: 0rem; margin-right: 10px;">format_list_numbered</mat-icon>
+                                <div>Productos</div>
+                              </div>
+                        </li>
+                        @if(!rol)
+                        {
+                            <li (click)="agregarProducto()" style="cursor: pointer;">
+                                <div style="display: flex; align-items: center;">
+                                    <mat-icon style="margin-left: 0rem; margin-right: 10px;">playlist_add</mat-icon>
+                                    <div>Agregar Producto</div>
+                                  </div>
+                            </li>
+                        }
+                    </ul>
+                    <hr>
+                    <div class="dropdown pb-4 cursorEstilo" (click)="cerrarSesion()" style="margin-top: 200%;">
+                        <div style="display: flex; align-items: center;">
+                            <mat-icon style="margin-left: 0rem; margin-right: 10px;">exit_to_app</mat-icon>
+                            <div>Cerrar Sesión</div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col" style="padding-top: 1%;" >
+                @if(rol)
+                {
+                    <div class="row izquierda">
+                        <div class="col-11" >
+                            {{UsuarioEtiqueta}}
+                        </div>
+                        <div class="col-1 centra dropdown" style="cursor: pointer;">
+                              <div class="cart-menu align-items-center d-flex" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="sidebar-social">
+                                  <ul>
+                                    <li>
+                                      <a class="cart" ><mat-icon style="margin-left: -1.5rem; margin-right: 0px; color: black;">shopping_cart</mat-icon>
+                                        @if (Carrito != null) {
+                                            <span id="cart_menu_num" class="badge rounded-circle">{{Carrito.length}}</span>
+                                        } @else {
+                                            <span id="cart_menu_num" class="badge rounded-circle">0</span>
+                                        }
+                                      </a>
+                              
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+    
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2" style="width: 300px !important; background: #F0F1F5;" (click)="openDropdown($event)">
+                                <div class="card-body container">
+                                  <div class="row">
+                                    <div class="col-12 centra" style="font-size: 10px; color: black; margin-bottom: 10%;">Mi Carrito</div>
+                                  </div>
+                                  <!-- for -->
+                                  @for (item of Carrito; track item.id) {
+                                  <div class="row">
+                                    <div class="col-1"></div>
+                                    <div class="col-10" style="background: #b1b4bf;">
+                                        <div class="row">
+                                            <div class="col-3" style="align-content: center;">
+                                                <img class="carritoImg" src="data:image/jpeg;base64,{{item.img}}" alt="Card image cap">
+                                            </div>
+                                            <div class="col-9" style="font-size: 10px; align-content: center;">
+                                                <div class="row">
+                                                    <div class="col-12" style="text-align: start;">
+                                                        <p>{{item.nombre}}</p>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3" style="text-align: start;">
+                                                        <p>${{item.precio}}</p>
+                                                    </div>
+                                                    <div class="col-2"></div>
+                                                    <div class="col-6 izquierda">
+                                                        <div class="row" style="background: white; height: 23px;">
+                                                            <div class="col-4" style="align-content: center;" (click)="accion(1, item)">
+                                                                <mat-icon style="color: black; font-size: 12px; text-align: justify; align-content: center;">delete_forever</mat-icon>
+                                                            </div>
+                                                            <div class="col-4" style="align-content: center; font-size: 15px;">
+                                                                {{item.cantidadCarrito}}
+                                                            </div>
+                                                            <div class="col-4" style="align-content: center;" (click)="accion(2, item)">
+                                                                <mat-icon style="color: black; font-size: 12px; text-align: justify; align-content: center;">add_circle</mat-icon>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-1"></div>
+                                  </div>
+                                }
+                                   <!-- for -->
+                                  
+                                  
+                                   <div class="row">
+                                    <div class="col-1"></div>
+                                    <div class="col-5 derecha" style="font-size: 15px; color: black; margin-top: 10%; font-weight: bold;">Total</div>
+                                    <div class="col-5 izquierda" style="font-size: 15px; color: black; margin-top: 10%; font-weight: bold;">{{totalDesc}}</div>
+                                    <div class="col-1"></div>
+                                  </div>
+    
+                                  <div class="row">
+                                    <div class="col-1"></div>
+                                    <div class="col-10 centra">
+                                        <button class="btn botonPersonalCarrito" (click)="compra()">Comprar ahora</button>
+                                    </div>
+                                    <div class="col-1"></div>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                        
+                    </div>
+                }
+                
+                <div class="row">
+                    <div class="col-12">
+                        <router-outlet class="general"></router-outlet>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}@else {
+    <router-outlet class="general"></router-outlet>
+}
+

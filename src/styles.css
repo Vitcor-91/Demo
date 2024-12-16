@@ -1,0 +1,116 @@
+/* You can add global styles to this file, and also import other style files */
+.general
+{
+    background: #353C59;
+    font-family: Nunito;
+}
+
+.logo
+{
+    padding-top: 41px;
+    font-family: Nunito;
+}
+
+.logoRegistro
+{
+    padding-top: 21px;
+    font-family: Nunito;
+}
+
+.logoImgMneu
+{
+    width: 150px;
+    font-family: Nunito;
+}
+
+.logoImg
+{
+    width: 240px;
+    height: 61px;
+    font-family: Nunito;
+}
+
+.centra
+{
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    font-family: Nunito;
+}
+
+.izquierda
+{
+    text-align: end;
+    font-family: Nunito;
+}
+
+.derecha
+{
+    text-align: start;
+    font-family: Nunito;
+}
+
+.rowInpput
+{
+    padding-bottom: 15px;
+    font-family: Nunito;
+}
+
+.inputs
+{
+    background: #F0F1F5 !important;
+    font-family: Nunito;
+}
+
+.botonPersonal
+{
+    background: #353C59 !important;
+    color: white !important;
+    width: 172px;
+    height: 47px;
+    font-family: Nunito;
+}
+
+.botonPersonalT
+{
+    background: #353C59 !important;
+    color: white !important;
+    font-family: Nunito;
+}
+
+
+.botonPersonalCarrito
+{
+    background: #353C59 !important;
+    color: white !important;
+    font-family: Nunito;
+    width: 100%;
+}
+
+.menuPersonal
+{
+    background: #353C59;
+    color: white;
+    font-family: Nunito;
+    height: 100%;
+}
+
+.textoBlanco
+{
+    color: white !important;
+    font-family: Nunito;
+}
+
+.cursorEstilo
+{
+    cursor: pointer;
+    font-family: Nunito;
+}
+
+.carritoImg
+{
+    width: 60px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

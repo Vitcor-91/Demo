@@ -1,0 +1,73 @@
+@if(View == 1) {
+<h2 mat-dialog-title>{{ Titulo }}</h2>
+<mat-dialog-content style="width: 400px">
+  <p>{{Mensaje}}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close class="botonPersonal" (click)="cerrarCataologs(1)">
+    {{ BtnUno }}
+  </button>
+  <button
+    mat-button
+    mat-dialog-close
+    (click)="cerrarCataologs(2)"
+    class="botonPersonal"
+  >
+    {{ BtnDos }}
+  </button>
+  <!-- cdkFocusInitial -->
+</mat-dialog-actions>
+} @else if(View == 2){
+  <h2 mat-dialog-title>{{ Titulo }}</h2>
+<mat-dialog-content style="width: 400px">
+  <p>{{Mensaje}}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close class="botonPersonal" style="color: white;" (click)="cerrarCataologs(1)">
+    {{ BtnUno }}
+  </button>
+  <!-- cdkFocusInitial -->
+</mat-dialog-actions>
+} @else if (View == 3) {
+  <h2 mat-dialog-title>{{ Titulo }}</h2>
+<mat-dialog-content style="width: 400px">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Ingresa el nombre del catalogo"
+    [(ngModel)]="Descripcion"
+  />
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close class="botonPersonal" (click)="cerrarCataologs(1)">
+    {{ BtnUno }}
+  </button>
+  <button
+    mat-button
+    mat-dialog-close
+    (click)="cerrarCataologs(2)"
+    class="botonPersonal"
+  >
+    {{ BtnDos }}
+  </button>
+</mat-dialog-actions>
+} @else if (View == 4) {
+  <h2 mat-dialog-title>{{ Titulo }}</h2>
+<mat-dialog-content style="width: 400px">
+  <p>{{Mensaje}}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close class="botonPersonal" (click)="cerrarCataologs(1)">
+    {{ BtnUno }}
+  </button>
+  <button
+    mat-button
+    mat-dialog-close
+    (click)="cerrarCataologs(2)"
+    class="botonPersonal"
+  >
+    {{ BtnDos }}
+  </button>
+  <!-- cdkFocusInitial -->
+</mat-dialog-actions>
+}

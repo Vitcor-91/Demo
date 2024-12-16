@@ -1,0 +1,60 @@
+<div class="general">
+  <div class="row logo">
+    <div class="col-12 centra">
+      <img class="logoImg" src="../../../assets/logo-strappberry 1.png" alt="Card image cap">
+    </div>
+  </div>
+  <div class="row" style="padding-top: 2%;">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <div class="card" style="background: white; width: 100%;">
+            
+            <div class="card-body">
+              <div class="row rowInpput">
+                <div class="col-2"></div>
+                <div class="col-8">
+                  <input type="email" class="form-control inputs" aria-label="Amount (to the nearest dollar)" placeholder="Email" [(ngModel)]="email">
+                </div>
+              </div>
+              
+              <div class="row rowInpput">
+                <div class="col-2"></div>
+                <div class="col-8">
+                  <input type="password" class="form-control inputs" aria-label="Amount (to the nearest dollar)" placeholder="Contraseña" [(ngModel)]="password">
+                </div>
+              </div>
+
+              <div class="row rowInpput">
+                <div class="col-12 centra">
+                  <button class="btn botonPersonal" (click)="login()">Ingresar</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="padding-bottom: 10%;"></div>
+            <div class="row">
+              <div class="col-12 centra">
+                <p>¿Aún no tienes cuenta?</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 centra">
+                <p style="cursor: pointer;" (click)="registro()">Registrate</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 centra">
+                <p>{{contacto}}</p>
+              </div>
+            </div>
+
+          </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  
+  <div class="row" style="min-height: 100px;">
+
+  </div>
+</div>
+  
